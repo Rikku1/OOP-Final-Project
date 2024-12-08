@@ -99,17 +99,17 @@ public class ATM {
         String accountNumber = input.next();
         System.out.print("Enter PIN: ");
         String pin = input.next();
-
-        loggedInAccount = accounts.stream()
+        // Find the account with the matching account number and PIN
+        loggedInAccount = accounts.stream() 
                                 .filter(acc -> acc.getAccountNumber().equals(accountNumber) && acc.getPin().equals(pin))
-                                .findFirst()
+                                .findFirst() 
                                 .orElse(null);
-
-        if (loggedInAccount != null) {
+        // If account found
+        if (loggedInAccount != null) { 
             System.out.println("Login successful! Welcome, " + loggedInAccount.getAccountName());
             accountSelectionMenu();
         } else {
-            System.out.println("Login failed. Invalid credentials.");
+            System.out.println("Login failed. Invalid credentials."); 
         }
     }
 
@@ -128,8 +128,7 @@ public class ATM {
                 choice = input.nextInt();
                 switch (choice) {
                     case 1:
-                    
-                        CheckingAccount checkingMenu = (CheckingAccount) accounts.stream()
+                        CheckingAccount checkingMenu = (CheckingAccount) accounts.stream() //object of type CheckingAccount
                                             .filter(acc -> acc instanceof CheckingAccount && acc.getAccountNumber().equals(loggedInAccount.getAccountNumber()))
                                             .findFirst()
                                             .orElse(null);
@@ -140,7 +139,7 @@ public class ATM {
 
                     case 2:
                         
-                        SavingsAccount savingsMenu = (SavingsAccount) accounts.stream()
+                        SavingsAccount savingsMenu = (SavingsAccount) accounts.stream() //object of type SavingsAccount
                                             .filter(acc -> acc instanceof SavingsAccount && acc.getAccountNumber().equals(loggedInAccount.getAccountNumber()))
                                             .findFirst()
                                             .orElse(null);

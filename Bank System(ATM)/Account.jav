@@ -53,10 +53,10 @@ abstract class Account {
             return balance;
         }
         if (getBalance() + amount > 500000) {
-            System.out.printf("%.2f exceeds the maximum balance limit of 500,000.\n", amount);
+            System.out.printf("%.2f exceeds the maximum balance limit of 500,000 PHP.\n", amount);
         } else {
             setBalance(getBalance() + amount);
-            System.out.printf("Deposit successful! New Balance: %.2f\n", getBalance());
+            System.out.printf("Deposit successful! New Balance: %.2f PHP\n", getBalance());
         }
         return balance;
     }
@@ -71,7 +71,7 @@ abstract class Account {
             System.out.println("Insufficient balance.");
         } else {
             setBalance(getBalance() - (amount + transactionFee));
-            System.out.printf("Withdrawal successful. New Balance: %.2f\n", balance);
+            System.out.printf("Withdrawal successful. New Balance: %.2f PHP\n", balance);
         }
         return balance;
     }

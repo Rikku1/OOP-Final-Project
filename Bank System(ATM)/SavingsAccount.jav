@@ -6,7 +6,7 @@ class SavingsAccount extends Account {
     private double interestRate; // Attribute for interest rate
     private LocalDate lastInterestApplied; // To track the last date interest was applied
 
-    public SavingsAccount(double interestRate) {
+    public SavingsAccount(double interestRate) { // Constructor
         this.interestRate = interestRate; // Initialize interest rate
         this.lastInterestApplied = LocalDate.now(); // Set the initial date to now
     }
@@ -72,14 +72,14 @@ class SavingsAccount extends Account {
     }
 
     private void applyInterestDue() { // Method to check if a year has passed and apply interest if due
-        LocalDate today = LocalDate.now();
-        long yearsElapsed = ChronoUnit.YEARS.between(lastInterestApplied, today);
+        LocalDate today = LocalDate.now(); // Get the current date
+        long yearsElapsed = ChronoUnit.YEARS.between(lastInterestApplied, today); // Calculate the years elapsed since the last interest was applied
 
         if (yearsElapsed >= 1) { // Check if a year has passed
             double interest = getBalance() * (interestRate / 100) * yearsElapsed; // Calculate interest for the elapsed years
             setBalance(getBalance() + interest); // Directly add interest to the balance
             lastInterestApplied = today; // Update the last interest applied date
-            System.out.printf("Interest applied: %.2f. New balance: %.2f\n", interest, getBalance());
+            System.out.printf("Interest applied: %.2f. New balance: %.2f PHP\n", interest, getBalance());
         }
     }
 }
