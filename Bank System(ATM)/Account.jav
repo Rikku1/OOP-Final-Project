@@ -1,57 +1,78 @@
 import java.util.Scanner;
 
-abstract class Account{
+abstract class Account {
     Scanner input = new Scanner(System.in);
-    
-    private double balance = 0; // Private attribute to store balance
+
+    private String accountName;
+    private String accountNumber;
+    private String pin;
+    private double balance = 0; 
     double transactionFee = 12;
-    
-    public double getBalance() { // Method to get balance
+    //Getter and Setter methods for accountName
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+    //Getter and Setter methods for accountNumber
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+    //Getter and Setter methods for pin
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+    //Getter and Setter methods for balance
+    public double getBalance() {
         return balance;
     }
-    
-    public void setBalance(double balance) { // Method to set balance
+
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public abstract void menu(); // Abstract method to be implemented by subclasses
+    public abstract void menu(); 
 
-    public void showBalance(){ // Method to display balance
+    public void showBalance() {
         System.out.printf("Account Balance: %.2f PHP\n", balance);
     }
 
-    public double deposit(double amount){ // Method to deposit money
-        try { // Error Handling
-            if(0 > amount){
-                throw new IllegalArgumentException("Cannot deposit negative amount!");    
-            } else if(getBalance() + amount > 500000) {
-                    System.out.printf(" %.2f",amount);
-                    System.out.println(" exceeds the Maximum \nBalance limit of 500,000!");
-            } else {
-                    setBalance(getBalance() + amount);
-                    System.out.printf("New Balance: %.2f\n", getBalance());
-            }
-        } 
-        catch (IllegalArgumentException e) {  // Error Handling
-            System.err.println(e.getMessage());
+    public double deposit(double amount) {
+        if (amount <= 0) {
+            System.err.println("Cannot deposit a non-positive amount.");
+            return balance;
+        }
+        if (getBalance() + amount > 500000) {
+            System.out.printf("%.2f exceeds the maximum balance limit of 500,000.\n", amount);
+        } else {
+            setBalance(getBalance() + amount);
+            System.out.printf("Deposit successful! New Balance: %.2f\n", getBalance());
         }
         return balance;
     }
 
-    public double withdraw(double amount){ // Method to withdraw money
-        try { // Error Handling
-            if(0 >= amount){
-                throw new IllegalArgumentException("Invalid Amount! Cannot withdraw negative or zero value.");
-            } else if((amount + transactionFee) > getBalance()){
-                System.out.println("Insufficient balance!");
-            } else {
-            setBalance(getBalance() - (amount + transactionFee ));
-            System.out.printf("New Balance: %.2f\n", balance);
-            }
+    public double withdraw(double amount) {
+        if (amount <= 0) {
+            System.err.println("Invalid withdrawal amount.");
+            return balance;
         }
-        catch (IllegalArgumentException e) { // Error Handling
-            System.err.println(e.getMessage());
-        } 
-        return balance;     
+
+        if ((amount + transactionFee) > getBalance()) {
+            System.out.println("Insufficient balance.");
+        } else {
+            setBalance(getBalance() - (amount + transactionFee));
+            System.out.printf("Withdrawal successful. New Balance: %.2f\n", balance);
+        }
+        return balance;
     }
 }

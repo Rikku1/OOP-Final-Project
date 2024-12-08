@@ -1,145 +1,166 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
-class ATM{
-        Scanner input = new Scanner(System.in);
-        
-        Account checkingMenu = new CheckingAccount();
-        Account savingsMenu = new SavingsAccount(3.0);  
-        
-        public void accountMenu(){
-            int choice;
-        do{
-        System.out.println("===================================");
-        System.out.println("\t\tATM");
-        System.out.println("===================================");
-        System.out.println("  1. Checking Account");
-        System.out.println("  2. Savings Account");
-        System.out.println("  3. Exit");
-        System.out.println("===================================");
-        System.out.print("  Select an option: ");
-        try{    
-            choice = input.nextInt();
+public class ATM {
+    Account checkingAccount = new CheckingAccount();
+    Account savingsAccount = new SavingsAccount(3.0);
+
+    private Scanner input = new Scanner(System.in);
+    private List<Account> accounts = new ArrayList<>();
+    private Account loggedInAccount = null;
+
+    public void accountMenu() {
+        int choice;
+        do {
             System.out.println("===================================");
-
+            System.out.println("\tATM");
+            System.out.println("===================================");
+            System.out.println("1. Create Account");
+            System.out.println("2. Login");
+            System.out.println("3. Exit");
+            System.out.print("Select an option: ");
+            try {
+                choice = input.nextInt();
+            
             switch (choice) {
                 case 1:
-                    checkingMenu.menu();
-                    continue;import java.util.*;
-
-                    class ATM {
-                        private Scanner input = new Scanner(System.in);
-                        private List<Account> accounts = new ArrayList<>();
-                        private Account loggedInAccount = null;
-                    
-                        public void accountMenu() {
-                            int choice;
-                            do {
-                                System.out.println("===================================");
-                                System.out.println("\t\tATM");
-                                System.out.println("===================================");
-                                System.out.println("  1. Create Account");
-                                System.out.println("  2. Login");
-                                System.out.println("  3. Exit");
-                                System.out.println("===================================");
-                                System.out.print("  Select an option: ");
-                                try {
-                                    choice = input.nextInt();
-                                    System.out.println("===================================");
-                                    switch (choice) {
-                                        case 1:
-                                            createAccount();
-                                            break;
-                                        case 2:
-                                            login();
-                                            break;
-                                        case 3:
-                                            System.out.println("Thank you for using the ATM. Goodbye!");
-                                            break;
-                                        default:
-                                            System.out.println("Invalid option! Try again.");
-                                    }
-                                } catch (InputMismatchException e) {
-                                    System.err.println("Invalid input! Please enter a number.");
-                                    input.nextLine(); // Clear invalid input
-                                }
-                            } while (choice != 3);
-                        }
-                    
-                        private void createAccount() {
-                            input.nextLine(); // Clear buffer
-                            System.out.println("===================================");
-                            System.out.println("CREATE NEW ACCOUNT");
-                            System.out.println("===================================");
-                            System.out.print("Enter Account Name: ");
-                            String name = input.nextLine();
-                            System.out.print("Enter Account Number: ");
-                            String accountNumber = input.nextLine();
-                            System.out.print("Set a PIN: ");
-                            String pin = input.nextLine();
-                            System.out.println("Select Account Type:");
-                            System.out.println("  1. Checking Account");
-                            System.out.println("  2. Savings Account (3% Interest Rate)");
-                            System.out.print("Enter your choice: ");
-                            int type = input.nextInt();
-                    
-                            Account newAccount;
-                            if (type == 1) {
-                                newAccount = new CheckingAccount();
-                            } else if (type == 2) {
-                                newAccount = new SavingsAccount(3.0); // Fixed interest rate of 3%
-                            } else {
-                                System.out.println("Invalid account type. Returning to menu.");
-                                return;
-                            }
-                    
-                            newAccount.setAccountName(name);
-                            newAccount.setAccountNumber(accountNumber);
-                            newAccount.setPin(pin);
-                            accounts.add(newAccount);
-                    
-                            System.out.println("Account created successfully!");
-                        }
-                    
-                        private void login() {
-                            input.nextLine(); // Clear buffer
-                            System.out.println("===================================");
-                            System.out.println("LOGIN");
-                            System.out.println("===================================");
-                            System.out.print("Enter Account Number: ");
-                            String accountNumber = input.nextLine();
-                            System.out.print("Enter PIN: ");
-                            String pin = input.nextLine();
-                    
-                            loggedInAccount = accounts.stream()
-                                    .filter(acc -> acc.getAccountNumber().equals(accountNumber) && acc.getPin().equals(pin))
-                                    .findFirst()
-                                    .orElse(null);
-                    
-                            if (loggedInAccount != null) {
-                                System.out.println("Login successful! Welcome, " + loggedInAccount.getAccountName());
-                                loggedInAccount.menu(); // Call the specific menu for the logged-in account
-                            } else {
-                                System.out.println("Invalid account number or PIN. Please try again.");
-                            }
-                        }
-                    }
-                    
+                    createAccount(); //call the createAccount method
+                    break;
                 case 2:
-                    savingsMenu.menu();
-                    continue;
+                    login(); //call the login method
+                    break;
                 case 3:
+                    System.out.println("Exiting..."); //exit the program
                     break;
                 default:
-                    System.out.println("Invalid option! Try again.");
-                    continue;
+                    System.out.println("Invalid option. Try again."); //invalid option
+                } 
             }
-        }catch (InputMismatchException e){
-            System.err.println("Invalid Input!");
-            input.nextLine(); // Clear invalid input
-            choice = 0; // Reset choice to prevent exiting the loop
+            catch (InputMismatchException e) { // Error Handling
+                System.err.println("Invalid input! Please enter a number.");
+                input.nextLine(); // Clear invalid input
+                choice = 0;
+            }
+    }       while (choice != 3);
+}
+
+    private void createAccount() {
+        input.nextLine();
+        System.out.println("===================================");
+        System.out.println("CREATE NEW ACCOUNT");
+        System.out.println("===================================");
+        System.out.print("Enter Account Name: ");
+        String name = input.nextLine();
+        
+        String accountNumber;
+        while (true) {
+            System.out.print("Enter 8-digit Account Number: ");
+            accountNumber = input.nextLine();
+            if (accountNumber.matches("\\d{8}")) { // Ensure it is exactly 8 digits
+                break;
+            } else {
+                System.out.println("Invalid account number. Please enter exactly 8 digits.");
+            }
         }
-            
-        } while(choice != 3);
+    
+        String pin;
+        while (true) {
+            System.out.print("Enter 4-digit PIN: ");
+            pin = input.nextLine();
+            if (pin.matches("\\d{4}")) { // Ensure it is exactly 4 digits
+                break;
+            } else {
+                System.out.println("Invalid PIN. Try Again.");
+            }
         }
+    
+        // Create a Combined Account (Both Checking and Savings)
+        CheckingAccount checkingAccount = new CheckingAccount();
+        SavingsAccount savingsAccount = new SavingsAccount(3.0);
+    
+        // Set Details for Both Accounts
+        checkingAccount.setAccountName(name);
+        checkingAccount.setAccountNumber(accountNumber);
+        checkingAccount.setPin(pin);
+    
+        savingsAccount.setAccountName(name);
+        savingsAccount.setAccountNumber(accountNumber);
+        savingsAccount.setPin(pin);
+    
+        // Add Both Accounts to the List
+        accounts.add(checkingAccount);
+        accounts.add(savingsAccount);
+    
+        System.out.println("Account created successfully!");
+    }
+    
+
+    private void login() {
+        System.out.print("Enter Account Number: ");
+        String accountNumber = input.next();
+        System.out.print("Enter PIN: ");
+        String pin = input.next();
+
+        loggedInAccount = accounts.stream()
+                                .filter(acc -> acc.getAccountNumber().equals(accountNumber) && acc.getPin().equals(pin))
+                                .findFirst()
+                                .orElse(null);
+
+        if (loggedInAccount != null) {
+            System.out.println("Login successful! Welcome, " + loggedInAccount.getAccountName());
+            accountSelectionMenu();
+        } else {
+            System.out.println("Login failed. Invalid credentials.");
+        }
+    }
+
+    public void accountSelectionMenu() {
+        int choice;
+        do {
+            System.out.println("===================================");
+            System.out.println("\t\tATM Menu");
+            System.out.println("===================================");
+            System.out.println("1. Checking Account");
+            System.out.println("2. Savings Account");
+            System.out.println("3. Exit");
+            System.out.print("Select an option: ");
+
+            try {
+                choice = input.nextInt();
+                switch (choice) {
+                    case 1:
+                    
+                        CheckingAccount checkingMenu = (CheckingAccount) accounts.stream()
+                                            .filter(acc -> acc instanceof CheckingAccount && acc.getAccountNumber().equals(loggedInAccount.getAccountNumber()))
+                                            .findFirst()
+                                            .orElse(null);
+                        if (checkingMenu != null) {
+                            checkingMenu.menu(); // Go to the checking menu
+                        }
+                        break;
+
+                    case 2:
+                        
+                        SavingsAccount savingsMenu = (SavingsAccount) accounts.stream()
+                                            .filter(acc -> acc instanceof SavingsAccount && acc.getAccountNumber().equals(loggedInAccount.getAccountNumber()))
+                                            .findFirst()
+                                            .orElse(null);
+                        if (savingsMenu != null) {
+                            savingsMenu.menu();// Go to the savings menu
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("Returning to main menu...");
+                        break;
+                    default:
+                        System.err.println("Invalid choice. Please try again.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Invalid input! Please enter a valid number.");
+                input.nextLine(); 
+                choice = 0;
+            }
+        } while (choice != 3);
+    }
 }
