@@ -1,6 +1,7 @@
-import java.time.LocalDate; //For the date
-import java.time.temporal.ChronoUnit; //For the 
-import java.util.InputMismatchException;
+import java.time.LocalDate; // For handling dates
+import java.time.temporal.ChronoUnit; // For date manipulations
+import java.util.InputMismatchException; // For handling input mismatch exceptions
+
 
 class SavingsAccount extends Account {
     private double interestRate; // Attribute for interest rate

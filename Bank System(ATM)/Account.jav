@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner; //For Scanner
 
 abstract class Account {
     Scanner input = new Scanner(System.in);

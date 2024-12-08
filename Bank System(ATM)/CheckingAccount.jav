@@ -1,4 +1,4 @@
-import java.util.InputMismatchException; // Import for invalid user input
+import java.util.InputMismatchException; // For handling input mismatch exceptions
 
 public class CheckingAccount extends Account{
     

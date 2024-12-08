@@ -1,4 +1,4 @@
-import java.util.*; 
+import java.util.*; //For Scanner and ArrayList
 
 public class ATM {
     Account checkingAccount = new CheckingAccount();
