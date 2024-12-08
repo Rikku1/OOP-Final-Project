@@ -1,57 +1,55 @@
 <h1 align="center"> ATM SYSTEM </h1> <br>
 <p align="center">
   <a href="https://gitpoint.co/">
-    <img alt="ATM SYSTEM" title="ATM SYSTEM" src="http://i.imgur.com/VShxJHs.png" width="450">
+    <img alt="ATM SYSTEM" title="ATM SYSTEM" src="https://github.com/Rikku1/OOP-Final-Project/blob/main/atm.png" width="250">
   </a>
 </p>
 
-<p align="center">
-  GitHub in your pocket. Built with React Native.
+<p align="center" dir="auto">
+  <em>
+    <code>Jenrick Magtaas IT-2104</code>
+  </em>
 </p>
+<p align="center" dir="auto">
+<h2>🔍About</h2>
+<ul dir="auto">
+  <li><a href="#-overview">Project Overview</a></li>
+  <li><a href="#-OOP-principles">OOP Principles</a></li>
+  <li><a href="#-SDG">Chosen SDG</a></li>
+  <li><a href="#-instructions">Instructions on Running the Program</a></li>
+  <li><a href="#-acknowledgment">Acknowledgments</a></li>
+</ul>
 
+<div class="markdown-heading" dir="auto">
+  <h2 tabindex="-1" class="heading-element" dir="auto">Project Overview🗒️</h2>
+</div>
+<p dir="auto"><b>
+An ATM System project is a basic implementation that simulates the core functions of an Automated Teller Machine. It allows users to create accounts, log in, and manage their banking activities. The system supports two types of accounts—checking and savings—and includes functionalities for viewing account balances, making withdrawals, and depositing funds. This simple project focuses on applying fundamental programming concepts like user authentication, conditional logic, and basic data storage to replicate essential banking operations.
 <p align="center">
-  <a href="https://itunes.apple.com/us/app/gitpoint/id1251245162?mt=8">
-    <img alt="Download on the App Store" title="App Store" src="http://i.imgur.com/0n2zqHD.png" width="140">
-  </a>
-
-  <a href="https://play.google.com/store/apps/details?id=com.gitpoint">
-    <img alt="Get it on Google Play" title="Google Play" src="http://i.imgur.com/mtGRPuM.png" width="140">
-  </a>
+  <img src = "https://media.giphy.com/media/AslZw11iNXkkx33XZM/giphy.gif?cid=ecf05e47hzlrxdo175o49x8g158mhzhb36s17zoe4jyfsjas&ep=v1_gifs_search&rid=giphy.gif&ct=g" width=350>
 </p>
+</b></p>
+<hr></hr>
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Feedback](#feedback)
-- [Contributors](#contributors)
-- [Build Process](#build-process)
-- [Backers](#backers-)
-- [Sponsors](#sponsors-)
-- [Acknowledgments](#acknowledgments)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## Introduction
-
-[![Build Status](https://img.shields.io/travis/gitpoint/git-point.svg?style=flat-square)](https://travis-ci.org/gitpoint/git-point)
-[![Coveralls](https://img.shields.io/coveralls/github/gitpoint/git-point.svg?style=flat-square)](https://coveralls.io/github/gitpoint/git-point)
-[![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](./CONTRIBUTORS.md)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
-[![Gitter chat](https://img.shields.io/badge/chat-on_gitter-008080.svg?style=flat-square)](https://gitter.im/git-point)
-
-View repository and user information, control your notifications and even manage your issues and pull requests. Built with React Native, GitPoint is one of the most feature-rich unofficial GitHub clients that is 100% free.
-
-**Available for both iOS and Android.**
-
+<div class="markdown-heading" dir="auto">
+  <h2 tabindex="-1" class="heading-element" dir="auto">OOP Principles🏛️</h2>
+</div>
+<p dir="auto"><b>
+<ul dir="auto">
+  <li><b>💊Encapsulation</b> - I</li>
+  <li><b>🧬Inheritance</b> - </li>
+  <li><b>🗄️Abstraction</b> -  </li>
+  <li><b>📑Polymorphism</b> - </li>
+</ul>
 <p align="center">
-  <img src = "http://i.imgur.com/HowF6aM.png" width=350>
+  <img src = "https://media.giphy.com/media/AslZw11iNXkkx33XZM/giphy.gif?cid=ecf05e47hzlrxdo175o49x8g158mhzhb36s17zoe4jyfsjas&ep=v1_gifs_search&rid=giphy.gif&ct=g" width=350>
 </p>
+</b></p>
+<hr></hr>
 
-## Features
+
+## 
 
 A few of the things you can do with GitPoint:
 
