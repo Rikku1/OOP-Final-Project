@@ -7,19 +7,21 @@ public class CheckingAccount extends Account{
         
         int choice;
         do {
-        System.out.println("===================================");
-        System.out.println("\tATM(Checking Account)");
-        System.out.println("===================================");
-        System.out.println("  1. Check Balance");
-        System.out.println("  2. Deposit");
-        System.out.println("  3. Withdraw");
-        System.out.println("  4. Back");
-        System.out.println("===================================");
-        System.out.print("  Select an option: ");
+            System.out.println("****************************************************************************");
+            System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+            System.out.println("*\t\t\t     CHECKING ACCOUNT\t\t\t\t   *");
+            System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+            System.out.println("****************************************************************************");
+            System.out.println("  1. Check Balance");
+            System.out.println("  2. Deposit");
+            System.out.println("  3. Withdraw");
+            System.out.println("  4. Back");
+            System.out.println("****************************************************************************");
+            System.out.print("  Select an option: ");
         
         try{  // Error Handling
             choice = input.nextInt();
-            System.out.println("===================================");
+            System.out.println("****************************************************************************");
             
             switch (choice) {
                 case 1:
@@ -35,9 +37,8 @@ public class CheckingAccount extends Account{
                     }
                     break;
                 case 3:
-                    System.out.println("-----------------------------------");
-                    System.out.println("Note: 12 PHP Transaction fee will\nbe applied in every transaction");
-                    System.out.println("-----------------------------------");
+                    System.out.println("Note: 12 PHP Transaction fee will be applied in every transaction");
+                    System.out.println("****************************************************************************");
                     System.out.print("Enter amount to withdraw: ");
                     double withdrawAmount = input.nextDouble(); // Get the withdraw amount from the user
                     if (withdrawAmount <= 0) { // Check if the withdraw amount is valid

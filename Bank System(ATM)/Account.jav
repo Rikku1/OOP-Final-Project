@@ -41,13 +41,13 @@ abstract class Account {
         this.balance = balance;
     }
 
-    public abstract void menu(); 
+    public abstract void menu(); //Abstract method for menu
 
-    public void showBalance() {
+    public void showBalance() { //Method to show balance
         System.out.printf("Account Balance: %.2f PHP\n", balance);
     }
 
-    public double deposit(double amount) {
+    public double deposit(double amount) { //Method to deposit
         if (amount <= 0) {
             System.err.println("Cannot deposit a non-positive amount.");
             return balance;
@@ -61,7 +61,7 @@ abstract class Account {
         return balance;
     }
 
-    public double withdraw(double amount) {
+    public double withdraw(double amount) { //Method to withdraw
         if (amount <= 0) {
             System.err.println("Invalid withdrawal amount.");
             return balance;

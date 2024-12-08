@@ -5,19 +5,22 @@ public class ATM {
     Account savingsAccount = new SavingsAccount(3.0);
 
     private Scanner input = new Scanner(System.in);
-    private List<Account> accounts = new ArrayList<>();
-    private Account loggedInAccount = null;
+    private List<Account> accounts = new ArrayList<>(); //arraylist of accounts
+    private Account loggedInAccount = null; //account currently logged in
 
     public void accountMenu() {
         int choice;
         do {
-            System.out.println("===================================");
-            System.out.println("\tATM");
-            System.out.println("===================================");
-            System.out.println("1. Create Account");
-            System.out.println("2. Login");
-            System.out.println("3. Exit");
-            System.out.print("Select an option: ");
+            System.out.println("****************************************************************************");
+            System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+            System.out.println("*\t\t\t\t  ATM Menu\t\t\t\t   *");
+            System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+            System.out.println("****************************************************************************");
+            System.out.println("  1. Create Account");
+            System.out.println("  2. Login");
+            System.out.println("  3. Exit");
+            System.out.println("****************************************************************************");
+            System.out.print("  Select an option: ");
             try {
                 choice = input.nextInt();
             
@@ -45,9 +48,11 @@ public class ATM {
 
     private void createAccount() {
         input.nextLine();
-        System.out.println("===================================");
-        System.out.println("CREATE NEW ACCOUNT");
-        System.out.println("===================================");
+        System.out.println("****************************************************************************");
+        System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+        System.out.println("*\t\t\t     CREATE NEW ACCOUNT\t\t\t\t   *");
+        System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+        System.out.println("****************************************************************************");
         System.out.print("Enter Account Name: ");
         String name = input.nextLine();
         
@@ -95,6 +100,11 @@ public class ATM {
     
 
     private void login() {
+        System.out.println("****************************************************************************");
+        System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+        System.out.println("*\t\t\t\t   LOG IN\t\t\t\t   *");
+        System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+        System.out.println("****************************************************************************");
         System.out.print("Enter Account Number: ");
         String accountNumber = input.next();
         System.out.print("Enter PIN: ");
@@ -116,9 +126,11 @@ public class ATM {
     public void accountSelectionMenu() {
         int choice;
         do {
-            System.out.println("===================================");
-            System.out.println("\t\tATM Menu");
-            System.out.println("===================================");
+            System.out.println("****************************************************************************");
+        System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+        System.out.println("*\t\t\t        ACCOUNT MENU\t\t\t\t   *");
+        System.out.println("*\t\t\t\t\t\t\t\t\t   *");
+        System.out.println("****************************************************************************");
             System.out.println("1. Checking Account");
             System.out.println("2. Savings Account");
             System.out.println("3. Exit");
@@ -128,7 +140,7 @@ public class ATM {
                 choice = input.nextInt();
                 switch (choice) {
                     case 1:
-                        CheckingAccount checkingMenu = (CheckingAccount) accounts.stream() //object of type CheckingAccount
+                        CheckingAccount checkingMenu = (CheckingAccount) accounts.stream() //object of Checking Account to search for accounts
                                             .filter(acc -> acc instanceof CheckingAccount && acc.getAccountNumber().equals(loggedInAccount.getAccountNumber()))
                                             .findFirst()
                                             .orElse(null);
@@ -139,9 +151,9 @@ public class ATM {
 
                     case 2:
                         
-                        SavingsAccount savingsMenu = (SavingsAccount) accounts.stream() //object of type SavingsAccount
-                                            .filter(acc -> acc instanceof SavingsAccount && acc.getAccountNumber().equals(loggedInAccount.getAccountNumber()))
-                                            .findFirst()
+                        SavingsAccount savingsMenu = (SavingsAccount) accounts.stream() //object of SavingsAccount to search for accounts
+                                            .filter(acc -> acc instanceof SavingsAccount && acc.getAccountNumber().equals(loggedInAccount.getAccountNumber())) 
+                                            .findFirst() 
                                             .orElse(null);
                         if (savingsMenu != null) {
                             savingsMenu.menu();// Go to the savings menu
